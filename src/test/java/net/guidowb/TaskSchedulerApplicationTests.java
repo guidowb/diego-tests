@@ -20,7 +20,19 @@ public class TaskSchedulerApplicationTests {
 
 	@Test
 	public void taskCreationSucceeds() throws InterruptedException {
-		TaskManager manager = TaskManager.create("receptor.192.168.11.11.xip.io");
-		manager.submitTask("echo", "hello", "world!");
+		TaskManager manager = TaskManager.create("receptor.local.lattice.cf");
+		manager.submitMonitoredTask("echo", "hello", "world!");
+	}
+
+	@Test
+	public void longRunningTask() throws InterruptedException {
+		TaskManager manager = TaskManager.create("receptor.local.lattice.cf");
+		manager.submitMonitoredTask("sleep", "5");
+	}
+
+	@Test
+	public void unMonitoredTask() throws InterruptedException {
+		TaskManager manager = TaskManager.create("receptor.local.lattice.cf");
+		manager.submitTask("sleep", "5");
 	}
 }

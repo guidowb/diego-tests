@@ -1,16 +1,10 @@
 <h2>Tasks</h2>
 
 <div>
-</div>
-
-<div>
-	<div class="panel" ng-repeat="(space, members) in canaries | orderBy: ['spaceName','spaceId'] | groupBy: 'spaceId'">
-		<div>{{members[0].applicationRoute}}</div>
-		<div class="minor-text">{{members[0].spaceName}}</div>
-		<div ng-repeat="(application, instances) in members | groupBy: 'applicationName'">
-			<div class="canary" ng-class="canaryClass(instance)" ng-repeat="instance in instances | orderBy: 'instanceIndex'">
-				{{instance.instanceIndex}}
-			</div>
-		</div>
+	<div class="task" ng-repeat="task in tasks">
+		{{task.taskIndex}}
+	</div>
+	<div class="button">
+		Create
 	</div>
 </div>
